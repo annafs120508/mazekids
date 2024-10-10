@@ -7,13 +7,18 @@ public class SwipeController : MonoBehaviour
     [SerializeField] int maxPage;
     int currentPage;
     Vector3 targetPos;
+
     [SerializeField] Vector3 pageStep;
     [SerializeField] RectTransform levelPagesRect;
 
     [SerializeField] float tweenTime;
     [SerializeField] LeanTweenType tweenType;
 
-
+    private void Awake()
+    {
+        currentPage = 1;
+        targetPos = levelPagesRect.localPosition;
+    }
     public void Next()
     {
         if(currentPage < maxPage)
@@ -24,10 +29,9 @@ public class SwipeController : MonoBehaviour
         }
     }
 
-
     public void Previous()
     {
-        if(currentPage > 1)
+        if (currentPage > 1)
         {
             currentPage--;
             targetPos -= pageStep;
